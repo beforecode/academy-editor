@@ -7,16 +7,9 @@ const innerhtml = document.querySelector(".innerHTML")
 
 
 mainTitle.addEventListener("click", () => {
-    // let selected = textArea.value.substring(textArea.selectionStart,textArea.selectionEnd)
-    // console.log(selected)
     let selected = textArea.value.substring(textArea.selectionStart,textArea.selectionEnd)
-    console.log(selected)
     let match = textArea.value.search(selected)
-    console.log(match)
-    let replaced = textArea.value.replace(match.toString(), "xxx")
-    console.log(replaced)
-    // let formated = setMainTitle(selected)
-    // view.innerHTML += formated
+    finder(textArea, match, selected)  
 })
 mainDesc.addEventListener("click", () => {
     let selected = textArea.value.substring(textArea.selectionStart,textArea.selectionEnd)
@@ -27,6 +20,11 @@ render.addEventListener("click", () => {
     innerhtml.value = view.innerHTML
 })
 // ----------------
+let finder = (tetxArea, match, selected) => {
+        let {selectionStart,selectionEnd, value} = textArea
+        let str = value.substring(selectionStart, selectionEnd)
+        tetxArea.value = value.replace(str, "X")
+}
 const setMainTitle = txt => {
     if(txt==="") return console.error("Noting was selected")
     let formated = `<div class="ct">${txt}</div>`
@@ -37,3 +35,4 @@ const setDesc = txt => {
     let formated = `<div class="cd">${txt}</div>`
     return formated
 }
+

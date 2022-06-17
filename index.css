@@ -6,6 +6,36 @@
 body {
     background-color:#F2EBE9
 }
+/* ------------------------------ */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:60px;
+    padding:0 5px;
+    background-color: #354259;
+    color:#F2EBE9
+}
+header > div:first-child {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+header > div:first-child {
+    margin:0 5px;
+}
+header > div button {
+    margin:0 5px;
+    height:60px;
+    border:none;
+    cursor:pointer;
+    color:#fff;
+    font-size: 16px;
+    padding:0 10px;
+    background-color:grey;
+}
+textarea { font-size: 20px }
+/* ------------------------------ */
 .ct {
     color:#354259;
     font-size:20px
