@@ -3,36 +3,32 @@ const mainTitle = document.querySelector(".main_title")
 const mainDesc = document.querySelector(".main_desc")
 const textArea = document.querySelector("textarea")
 const view = document.querySelector(".view")
-const innerhtml = document.querySelector(".innerHTML")
 
 
 mainTitle.addEventListener("click", () => {
-    let selected = textArea.value.substring(textArea.selectionStart,textArea.selectionEnd)
-    let match = textArea.value.search(selected)
-    finder(textArea, match, selected)  
+    const formaterObj = {
+        start: `<div class="ct">`,
+        end: "</div>"
+    }
+    finder(textArea, formaterObj)  
 })
 mainDesc.addEventListener("click", () => {
-    let selected = textArea.value.substring(textArea.selectionStart,textArea.selectionEnd)
-    let formated = setDesc(selected)
-    view.innerHTML += formated
+    const formaterObj = {
+        start: `<div class="cd">`,
+        end: "</div>"
+    }
+    finder(textArea, formaterObj)
 })
 render.addEventListener("click", () => {
-    innerhtml.value = view.innerHTML
+    view.innerHTML = textArea.value
 })
 // ----------------
-let finder = (tetxArea, match, selected) => {
+let finder = (tetxArea, formaterObj) => {
         let {selectionStart,selectionEnd, value} = textArea
+        if(selectionStart === selectionEnd) return console.error("Noting was selected")
+        let {start, end} = formaterObj
         let str = value.substring(selectionStart, selectionEnd)
-        tetxArea.value = value.replace(str, "X")
+        tetxArea.value = value.replace(str, start + str + end)
 }
-const setMainTitle = txt => {
-    if(txt==="") return console.error("Noting was selected")
-    let formated = `<div class="ct">${txt}</div>`
-    return formated
-}
-const setDesc = txt => {
-    if(txt==="") return console.error("Noting was selected")
-    let formated = `<div class="cd">${txt}</div>`
-    return formated
-}
+
 
